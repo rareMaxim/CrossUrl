@@ -13,7 +13,7 @@ type
     FHttpClient: TIdHTTP;
   public
     constructor Create(AOwner: TComponent); override;
-    function Get(const AUrl: string): IcuHttpResponce;
+    function Get(const AUrl: string): IcuHttpResponse;
     destructor Destroy; override;
   end;
 
@@ -37,7 +37,7 @@ begin
   inherited;
 end;
 
-function TcuHttpClientIndy.Get(const AUrl: string): IcuHttpResponce;
+function TcuHttpClientIndy.Get(const AUrl: string): IcuHttpResponse;
 begin
   FHttpClient.Get(AUrl);
   Result := TcuHttpResponce.Create(FHttpClient.Response);

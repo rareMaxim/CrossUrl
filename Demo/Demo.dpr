@@ -16,7 +16,7 @@ const
 procedure TestSysNet;
 var
   b: IcuHttpClient;
-  r: IcuHttpResponce;
+  r: IcuHttpResponse;
 begin
   b := TcuHttpClientSysNet.Create(nil);
   Writeln('Test System.Net: ');
@@ -29,7 +29,7 @@ end;
 procedure TestIndy;
 var
   b: IcuHttpClient;
-  r: IcuHttpResponce;
+  r: IcuHttpResponse;
 begin
   b := TcuHttpClientIndy.Create(nil);
   Writeln('Test Indy: ');

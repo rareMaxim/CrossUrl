@@ -35,7 +35,8 @@ requires
 
 contains
   CrossUrl.Indy.HttpClient in 'CrossUrl.Indy.HttpClient.pas',
-  CrossUrl.Indy.HttpResponse in 'CrossUrl.Indy.HttpResponse.pas';
+  CrossUrl.Indy.HttpResponse in 'CrossUrl.Indy.HttpResponse.pas',
+  CrossUrl.Indy.MultipartFormData in 'CrossUrl.Indy.MultipartFormData.pas';
 
 end.
 

@@ -3,10 +3,18 @@ unit CrossUrl.HttpClient;
 interface
 
 uses
-  System.Classes, System.SysUtils;
+  System.Classes,
+  System.SysUtils;
 
 type
-  IcuHttpResponce = interface
+  IcuMultipartFormData = interface
+    ['{C1FEF918-67B9-4503-B67F-AD942F16FEB3}']
+    procedure AddField(const AField, AValue: string);
+    procedure AddFile(const AFieldName, AFilePath: string);
+  end;
+
+  IcuHttpResponse = interface
+    ['{44F74F9B-CCD2-475E-95E0-02DA30AC749D}']
     //private
     function GetStatusCode: Integer;
     function GetStatusText: string;
@@ -19,7 +27,8 @@ type
   end;
 
   IcuHttpClient = interface
-    function Get(const AUrl: string): IcuHttpResponce;
+    ['{EB3348C4-5651-4BAB-988D-A28794FEB149}']
+    function Get(const AUrl: string): IcuHttpResponse;
   end;
 
 implementation

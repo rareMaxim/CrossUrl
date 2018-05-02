@@ -9,7 +9,7 @@ uses
   System.Classes;
 
 type
-  TcuHttpResponce = class(TInterfacedObject, IcuHttpResponce)
+  TcuHttpResponce = class(TInterfacedObject, IcuHttpResponse)
   private
     FHttpResponse: IHTTPResponse;
     function GetStatusCode: Integer;

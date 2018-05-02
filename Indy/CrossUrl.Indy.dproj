@@ -96,6 +96,7 @@
         <DCCReference Include="IndyCore.dcp"/>
         <DCCReference Include="CrossUrl.Indy.HttpClient.pas"/>
         <DCCReference Include="CrossUrl.Indy.HttpResponse.pas"/>
+        <DCCReference Include="CrossUrl.Indy.MultipartFormData.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
