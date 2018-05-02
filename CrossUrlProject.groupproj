@@ -10,7 +10,10 @@
             <Dependencies>Core\CrossUrl.dproj</Dependencies>
         </Projects>
         <Projects Include="Indy\CrossUrl.Indy.dproj">
-            <Dependencies/>
+            <Dependencies>Core\CrossUrl.dproj</Dependencies>
+        </Projects>
+        <Projects Include="Demo\Demo.dproj">
+            <Dependencies>Indy\CrossUrl.Indy.dproj;Core\CrossUrl.dproj;System.Net\CrossUrl.SystemNet.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -38,23 +41,32 @@
     <Target Name="CrossUrl_SystemNet:Make" DependsOnTargets="CrossUrl:Make">
         <MSBuild Projects="System.Net\CrossUrl.SystemNet.dproj" Targets="Make"/>
     </Target>
-    <Target Name="CrossUrl_Indy">
+    <Target Name="CrossUrl_Indy" DependsOnTargets="CrossUrl">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj"/>
     </Target>
-    <Target Name="CrossUrl_Indy:Clean">
+    <Target Name="CrossUrl_Indy:Clean" DependsOnTargets="CrossUrl:Clean">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CrossUrl_Indy:Make">
+    <Target Name="CrossUrl_Indy:Make" DependsOnTargets="CrossUrl:Make">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Demo" DependsOnTargets="CrossUrl.Indy;CrossUrl;CrossUrl.SystemNet">
+        <MSBuild Projects="Demo\Demo.dproj"/>
+    </Target>
+    <Target Name="Demo:Clean" DependsOnTargets="CrossUrl.Indy:Clean;CrossUrl:Clean;CrossUrl.SystemNet:Clean">
+        <MSBuild Projects="Demo\Demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Demo:Make" DependsOnTargets="CrossUrl.Indy:Make;CrossUrl:Make;CrossUrl.SystemNet:Make">
+        <MSBuild Projects="Demo\Demo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="CrossUrl;CrossUrl_SystemNet;CrossUrl_Indy"/>
+        <CallTarget Targets="CrossUrl;CrossUrl_SystemNet;CrossUrl_Indy;Demo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CrossUrl:Clean;CrossUrl_SystemNet:Clean;CrossUrl_Indy:Clean"/>
+        <CallTarget Targets="CrossUrl:Clean;CrossUrl_SystemNet:Clean;CrossUrl_Indy:Clean;Demo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CrossUrl:Make;CrossUrl_SystemNet:Make;CrossUrl_Indy:Make"/>
+        <CallTarget Targets="CrossUrl:Make;CrossUrl_SystemNet:Make;CrossUrl_Indy:Make;Demo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

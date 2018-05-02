@@ -28,6 +28,14 @@ package CrossUrl.Indy;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  IndySystem,
+  IndyProtocols,
+  IndyCore;
+
+contains
+  CrossUrl.Indy.HttpClient in 'CrossUrl.Indy.HttpClient.pas',
+  CrossUrl.Indy.HttpResponse in 'CrossUrl.Indy.HttpResponse.pas';
 
 end.
+

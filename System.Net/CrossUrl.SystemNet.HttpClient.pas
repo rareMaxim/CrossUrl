@@ -8,7 +8,7 @@ uses
   System.Net.HttpClient;
 
 type
-  TcuHttpClient = class(TInterfacedObject, IcuHttpClient)
+  TcuHttpClientSysNet = class(TComponent, IcuHttpClient)
   private
     FHttpClient: THTTPClient;
   public
@@ -19,23 +19,26 @@ type
 
 implementation
 
+uses
+  CrossUrl.SystemNet.HttpResponse;
+
 { TcuHttpClient }
 
-constructor TcuHttpClient.Create(AOwner: TComponent);
+constructor TcuHttpClientSysNet.Create(AOwner: TComponent);
 begin
-  inherited Create;
+  inherited Create(AOwner);
   FHttpClient := THTTPClient.Create;
 end;
 
-destructor TcuHttpClient.Destroy;
+destructor TcuHttpClientSysNet.Destroy;
 begin
   FHttpClient.Free;
   inherited Destroy;
 end;
 
-function TcuHttpClient.Get(const AUrl: string): IcuHttpResponce;
+function TcuHttpClientSysNet.Get(const AUrl: string): IcuHttpResponce;
 begin
-     FHttpClient.Get(AUrl)
+  Result := TcuHttpResponce.Create(FHttpClient.Get(AUrl));
 end;
 
 end.
