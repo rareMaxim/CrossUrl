@@ -13,14 +13,17 @@ type
     FHttpClient: TIdHTTP;
   public
     constructor Create(AOwner: TComponent); override;
-    function Get(const AUrl: string): IcuHttpResponse;
+    function Get(const AURL: string): IcuHttpResponse;
     destructor Destroy; override;
+    function Post(const AURL: string; const ASource: IcuMultipartFormData):
+      IcuHttpResponse;
   end;
 
 implementation
 
 uses
-  CrossUrl.Indy.HttpResponse;
+  CrossUrl.Indy.HttpResponse,
+  CrossUrl.Indy.MultipartFormData;
 { TcuHttpClient }
 
 constructor TcuHttpClientIndy.Create(AOwner: TComponent);
@@ -42,6 +45,13 @@ begin
   FHttpClient.Get(AUrl);
   Result := TcuHttpResponce.Create(FHttpClient.Response);
 
+end;
+
+function TcuHttpClientIndy.Post(const AURL: string; const ASource:
+  IcuMultipartFormData): IcuHttpResponse;
+begin
+  FHttpClient.Post(AURL, (ASource as TcuMultipartFormDataIndy).GetCore);
+  Result := TcuHttpResponce.Create(FHttpClient.Response);
 end;
 
 end.

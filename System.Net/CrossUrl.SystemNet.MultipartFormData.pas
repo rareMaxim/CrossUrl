@@ -11,6 +11,7 @@ type
   private
     FFormData: TMultipartFormData;
   public
+    function GetCore: TMultipartFormData;
     constructor Create;
     procedure AddField(const AField: string; const AValue: string);
     procedure AddFile(const AFieldName: string; const AFilePath: string);
@@ -40,6 +41,11 @@ destructor TcuMultipartFormDataSysNet.Destroy;
 begin
   FFormData.Free;
   inherited;
+end;
+
+function TcuMultipartFormDataSysNet.GetCore: TMultipartFormData;
+begin
+  Result := FFormData;
 end;
 
 end.

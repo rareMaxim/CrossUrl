@@ -3,7 +3,7 @@ unit CrossUrl.Indy.MultipartFormData;
 interface
 
 uses
-  IdMultiPartFormData,
+  IdMultipartFormData,
   CrossUrl.HttpClient;
 
 type
@@ -11,6 +11,7 @@ type
   private
     FFormData: TIdMultiPartFormDataStream;
   public
+    function GetCore: TIdMultiPartFormDataStream;
     constructor Create;
     procedure AddField(const AField: string; const AValue: string);
     procedure AddFile(const AFieldName: string; const AFilePath: string);
@@ -40,6 +41,11 @@ destructor TcuMultipartFormDataIndy.Destroy;
 begin
   FFormData.Free;
   inherited;
+end;
+
+function TcuMultipartFormDataIndy.GetCore: TIdMultiPartFormDataStream;
+begin
+  Result := FFormData;
 end;
 
 end.

@@ -29,6 +29,7 @@ type
   IcuHttpClient = interface
     ['{EB3348C4-5651-4BAB-988D-A28794FEB149}']
     function Get(const AUrl: string): IcuHttpResponse;
+    function Post(const AURL: string; const ASource: IcuMultipartFormData): IcuHttpResponse;
   end;
 
 implementation
