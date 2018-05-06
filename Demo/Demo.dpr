@@ -13,30 +13,26 @@ uses
 const
   SERVER = 'http://example.com/';
 
-procedure TestSysNet;
+procedure TestCore(Client: IcuHttpClient);
 var
-  b: IcuHttpClient;
   r: IcuHttpResponse;
 begin
-  b := TcuHttpClientSysNet.Create(nil);
-  Writeln('Test System.Net: ');
-  r := b.Get(SERVER);
+  r := Client.Get(SERVER);
   Writeln(r.StatusText);
   Writeln(r.StatusCode);
   Writeln(r.ContentAsString);
 end;
 
-procedure TestIndy;
-var
-  b: IcuHttpClient;
-  r: IcuHttpResponse;
+procedure TestSysNet;
 begin
-  b := TcuHttpClientIndy.Create(nil);
+  Writeln('Test System.Net: ');
+  TestCore(TcuHttpClientSysNet.Create(nil));
+end;
+
+procedure TestIndy;
+begin
   Writeln('Test Indy: ');
-  r := b.Get(SERVER);
-  Writeln(r.StatusText);
-  Writeln(r.StatusCode);
-  Writeln(r.ContentAsString);
+  TestCore(TcuHttpClientIndy.Create(nil));
 end;
 
 begin

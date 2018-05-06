@@ -12,11 +12,12 @@ type
   TcuHttpResponce = class(TInterfacedObject, IcuHttpResponse)
   private
     FResponse: TIdHTTPResponse;
+    FStream: TMemoryStream;
     function GetStatusCode: Integer;
     function GetStatusText: string;
     function GetContentStream: TStream;
   public
-    constructor Create(AResponse: TIdHTTPResponse);
+    constructor Create(AResponse: TIdHTTPResponse; AData: TMemoryStream);
     function ContentAsString(const AnEncoding: TEncoding = nil): string;
     property StatusText: string read GetStatusText;
     property StatusCode: Integer read GetStatusCode;
@@ -74,14 +75,15 @@ begin
   end;
 end;
 
-constructor TcuHttpResponce.Create(AResponse: TIdHTTPResponse);
+constructor TcuHttpResponce.Create(AResponse: TIdHTTPResponse; AData: TMemoryStream);
 begin
   FResponse := AResponse;
+  FStream := AData;
 end;
 
 function TcuHttpResponce.GetContentStream: TStream;
 begin
-  Result := FResponse.ContentStream;
+  Result := FStream //FResponse.ContentStream;
 end;
 
 function TcuHttpResponce.GetStatusCode: Integer;

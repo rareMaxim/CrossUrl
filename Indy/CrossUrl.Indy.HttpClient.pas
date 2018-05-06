@@ -41,17 +41,31 @@ begin
 end;
 
 function TcuHttpClientIndy.Get(const AUrl: string): IcuHttpResponse;
+var
+  LStream: TMemoryStream;
 begin
-  FHttpClient.Get(AUrl);
-  Result := TcuHttpResponce.Create(FHttpClient.Response);
+  LStream := TMemoryStream.Create;
+  try
+    FHttpClient.Get(AUrl, LStream);
+    Result := TcuHttpResponce.Create(FHttpClient.Response, LStream);
+  finally
+   // LStream.Free;
+  end;
 
 end;
 
 function TcuHttpClientIndy.Post(const AURL: string; const ASource:
   IcuMultipartFormData): IcuHttpResponse;
+var
+  LStream: TMemoryStream;
 begin
-  FHttpClient.Post(AURL, (ASource as TcuMultipartFormDataIndy).GetCore);
-  Result := TcuHttpResponce.Create(FHttpClient.Response);
+  LStream := TMemoryStream.Create;
+  try
+    FHttpClient.Post(AURL, (ASource as TcuMultipartFormDataIndy).GetCore);
+    Result := TcuHttpResponce.Create(FHttpClient.Response, LStream);
+  finally
+   // LStream.Free;
+  end;
 end;
 
 end.
