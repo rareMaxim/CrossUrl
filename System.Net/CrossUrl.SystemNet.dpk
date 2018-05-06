@@ -33,6 +33,7 @@ requires
 contains
   CrossUrl.SystemNet.HttpClient in 'CrossUrl.SystemNet.HttpClient.pas',
   CrossUrl.SystemNet.HttpResponse in 'CrossUrl.SystemNet.HttpResponse.pas',
-  CrossUrl.SystemNet.MultipartFormData in 'CrossUrl.SystemNet.MultipartFormData.pas';
+  CrossUrl.SystemNet.MultipartFormData in 'CrossUrl.SystemNet.MultipartFormData.pas',
+  CrossUrl.SystemNet.Register in 'CrossUrl.SystemNet.Register.pas';
 
 end.

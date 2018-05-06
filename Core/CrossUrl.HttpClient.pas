@@ -24,8 +24,25 @@ type
 
   IcuMultipartFormData = interface
     ['{C1FEF918-67B9-4503-B67F-AD942F16FEB3}']
+    function GetStream: TStream;
+    //
     procedure AddField(const AField, AValue: string);
     procedure AddFile(const AFieldName, AFilePath: string);
+    /// <summary>
+    /// Add a form data Stream
+    /// </summary>
+    /// <param name="AFieldName">
+    /// Field Name
+    /// </param>
+    /// <param name="Data">
+    /// Stream
+    /// </param>
+    /// <param name="AFileName">
+    /// file name: "File.ext"
+    /// </param>
+    procedure AddStream(const AFieldName: string; Data: TStream; const AFileName:
+      string = '');
+    property Stream: TStream read GetStream;
   end;
 
   IcuHttpResponse = interface
@@ -43,9 +60,14 @@ type
 
   IcuHttpClient = interface
     ['{EB3348C4-5651-4BAB-988D-A28794FEB149}']
+    function GetProxy: TcuProxy;
+    procedure SetProxy(const AProxy: TcuProxy);
+    //
+    function CreateMultipartFormData: IcuMultipartFormData;
     function Get(const AUrl: string): IcuHttpResponse;
     function Post(const AURL: string; const ASource: IcuMultipartFormData):
       IcuHttpResponse;
+    property Proxy: TcuProxy read GetProxy write SetProxy;
   end;
 
 implementation

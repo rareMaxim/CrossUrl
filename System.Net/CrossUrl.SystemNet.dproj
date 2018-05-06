@@ -94,6 +94,7 @@
         <DCCReference Include="CrossUrl.SystemNet.HttpClient.pas"/>
         <DCCReference Include="CrossUrl.SystemNet.HttpResponse.pas"/>
         <DCCReference Include="CrossUrl.SystemNet.MultipartFormData.pas"/>
+        <DCCReference Include="CrossUrl.SystemNet.Register.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -140,7 +141,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\CrossUrl.SystemNet.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\..\Public\Documents\Embarcadero\Studio\19.0\Bpl\CrossUrl.SystemNet.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>CrossUrl_SystemNet.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
