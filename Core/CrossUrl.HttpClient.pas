@@ -7,6 +7,21 @@ uses
   System.SysUtils;
 
 type
+  TcuProxy = record
+  private
+    FHost: string;
+    FPort: Integer;
+    FUserName: string;
+    FPassword: string;
+  public
+    constructor Create(const AHost: string; APort: Integer; const AUserName:
+      string = ''; const APassword: string = '');
+    property Host: string read FHost write FHost;
+    property Port: Integer read FPort write FPort;
+    property UserName: string read FUserName write FUserName;
+    property Password: string read FPassword write FPassword;
+  end;
+
   IcuMultipartFormData = interface
     ['{C1FEF918-67B9-4503-B67F-AD942F16FEB3}']
     procedure AddField(const AField, AValue: string);
@@ -29,10 +44,22 @@ type
   IcuHttpClient = interface
     ['{EB3348C4-5651-4BAB-988D-A28794FEB149}']
     function Get(const AUrl: string): IcuHttpResponse;
-    function Post(const AURL: string; const ASource: IcuMultipartFormData): IcuHttpResponse;
+    function Post(const AURL: string; const ASource: IcuMultipartFormData):
+      IcuHttpResponse;
   end;
 
 implementation
+
+{ TcuProxy }
+
+constructor TcuProxy.Create(const AHost: string; APort: Integer; const AUserName,
+  APassword: string);
+begin
+  FHost := AHost;
+  FPort := APort;
+  FUserName := AUserName;
+  FPassword := APassword;
+end;
 
 end.
 
