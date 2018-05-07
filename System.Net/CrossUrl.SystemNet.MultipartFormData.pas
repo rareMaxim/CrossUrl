@@ -33,7 +33,6 @@ uses
 procedure TcuMultipartFormDataSysNet.AddField(const AField, AValue: string);
 begin
   FFormData.AddField(AField, AValue);
-  FFormData.Stream
 end;
 
 procedure TcuMultipartFormDataSysNet.AddFile(const AFieldName, AFilePath: string);
