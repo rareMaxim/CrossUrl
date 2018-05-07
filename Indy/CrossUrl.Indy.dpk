@@ -31,7 +31,8 @@ requires
   rtl,
   IndySystem,
   IndyProtocols,
-  IndyCore;
+  IndyCore,
+  CrossUrl;
 
 contains
   CrossUrl.Indy.HttpClient in 'CrossUrl.Indy.HttpClient.pas',

@@ -28,7 +28,8 @@ package CrossUrl.SystemNet;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  CrossUrl;
 
 contains
   CrossUrl.SystemNet.HttpClient in 'CrossUrl.SystemNet.HttpClient.pas',

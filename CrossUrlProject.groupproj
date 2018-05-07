@@ -10,7 +10,7 @@
             <Dependencies>Core\CrossUrl.dproj</Dependencies>
         </Projects>
         <Projects Include="Indy\CrossUrl.Indy.dproj">
-            <Dependencies>Core\CrossUrl.dproj</Dependencies>
+            <Dependencies/>
         </Projects>
         <Projects Include="Demo\Demo.dproj">
             <Dependencies>Indy\CrossUrl.Indy.dproj;Core\CrossUrl.dproj;System.Net\CrossUrl.SystemNet.dproj</Dependencies>
@@ -41,13 +41,13 @@
     <Target Name="CrossUrl_SystemNet:Make" DependsOnTargets="CrossUrl:Make">
         <MSBuild Projects="System.Net\CrossUrl.SystemNet.dproj" Targets="Make"/>
     </Target>
-    <Target Name="CrossUrl_Indy" DependsOnTargets="CrossUrl">
+    <Target Name="CrossUrl_Indy">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj"/>
     </Target>
-    <Target Name="CrossUrl_Indy:Clean" DependsOnTargets="CrossUrl:Clean">
+    <Target Name="CrossUrl_Indy:Clean">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CrossUrl_Indy:Make" DependsOnTargets="CrossUrl:Make">
+    <Target Name="CrossUrl_Indy:Make">
         <MSBuild Projects="Indy\CrossUrl.Indy.dproj" Targets="Make"/>
     </Target>
     <Target Name="Demo" DependsOnTargets="CrossUrl.Indy;CrossUrl;CrossUrl.SystemNet">
