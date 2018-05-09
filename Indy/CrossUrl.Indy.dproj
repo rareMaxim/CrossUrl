@@ -101,6 +101,7 @@
         <DCCReference Include="CrossUrl.Indy.HttpResponse.pas"/>
         <DCCReference Include="CrossUrl.Indy.MultipartFormData.pas"/>
         <DCCReference Include="CrossUrl.Indy.Register.pas"/>
+        <DCCReference Include="CrossUrl.Indy.Uri.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -147,7 +148,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\..\..\Public\Documents\Embarcadero\Studio\19.0\Bpl\CrossUrl.Indy.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\CrossUrl.Indy.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>CrossUrl_Indy.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

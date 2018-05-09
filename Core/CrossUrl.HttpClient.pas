@@ -22,6 +22,13 @@ type
     property Password: string read FPassword write FPassword;
   end;
 
+  IcuUri = interface
+    ['{46DF4232-C572-45F8-8CAB-86096F32FA66}']
+    function GetScheme: string;
+    procedure SetScheme(const Value: string);
+    property Scheme: string read GetScheme write SetScheme;
+  end;
+
   IcuMultipartFormData = interface
     ['{C1FEF918-67B9-4503-B67F-AD942F16FEB3}']
     function GetStream: TStream;
