@@ -35,8 +35,8 @@ var
   LStream: TStream;
   LFreeLStream: Boolean;
 begin
-
   Result := '';
+  LStream := nil;
   if AnEncoding = nil then
   begin
     LCharset := FResponse.CharSet;
